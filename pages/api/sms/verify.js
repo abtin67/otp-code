@@ -4,6 +4,7 @@ import ConnectDB from "@/utils/connectDB"
 export default async function handler(req , res){
    
 
+    await ConnectDB()
     const {phone , code} = req.body 
 
     const isValidCode = await Otp.findOne({phone:phone , code:code})
