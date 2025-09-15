@@ -106,7 +106,7 @@ export default function Home() {
         </button>
         {!isCodeSend && (
           <div>
-            <h2>ورود به نکست وان کد</h2>
+            <h2>ورود به سایت</h2>
             <label className={stylse.label} htmlFor="">
               شماره موبایل خود را وارد کنید
             </label>
