@@ -6,7 +6,6 @@ export default async function handler(req , res){
     const {phone}= req.body;
     const code = Math.floor(Math.random()*90000)+1000
     const expTime = new Date().getTime() + (30 * 1000)
-    `@otp-code-ei18-git-main-abtin67s-projects.vercel.app #${code}`;
     
 
     try{
