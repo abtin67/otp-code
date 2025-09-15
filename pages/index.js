@@ -84,6 +84,23 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+  if ('OTPCredential' in window) {
+    const ac = new AbortController();
+
+    navigator.credentials.get({
+      otp: { transport: ['sms'] },
+      signal: ac.signal,
+    }).then(otp => {
+      setCode(otp.code); // مقدار کد رو مستقیم وارد state کن
+    }).catch(err => {
+      console.log('Web OTP API error:', err);
+    });
+
+    return () => ac.abort();
+  }
+}, [isCodeSend]);
+
+  useEffect(() => {
     let interval;
     if (timer > 0) {
       interval = setInterval(() => {
@@ -136,6 +153,7 @@ export default function Home() {
             <h2>تایید شماره موبایل</h2>
             <label htmlFor="">کد ارسال شده رو وارد کنید</label>
             <input
+              id="otp-input"
               value={code}
               onChange={(e) => setCode(e.target.value)}
               className={stylse.input}
@@ -148,7 +166,11 @@ export default function Home() {
               </p>
             ) : (
               <p onClick={resendCodeHandler} className={stylse.sendAgain}>
-                {isLoading ? <FaSpinner className={stylse.spiner} /> :'ارسال مجدد کد'}
+                {isLoading ? (
+                  <FaSpinner className={stylse.spiner} />
+                ) : (
+                  "ارسال مجدد کد"
+                )}
               </p>
             )}
             <button onClick={sendcodeHandler} className={stylse.button}>
