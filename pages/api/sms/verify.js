@@ -2,7 +2,7 @@ import Otp from "@/models/Otp"
 import ConnectDB from "@/utils/connectDB"
 
 export default async function handler(req , res){
-    console.log("MONGODB_URI in prod:", process.env.MONGODB_URI);
+   
 
     const {phone , code} = req.body 
 
