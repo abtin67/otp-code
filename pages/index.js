@@ -101,7 +101,7 @@ export default function Home() {
           {darkMode ? (
             <MdLightMode size={25} fill="#f8f8f4ff" />
           ) : (
-            <MdDarkMode size={25} fill="#221313ff" />
+            <MdDarkMode size={26} fill="#221313ff" />
           )}
         </button>
         {!isCodeSend && (
