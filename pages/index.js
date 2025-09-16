@@ -22,8 +22,8 @@ export default function Home() {
 
   const sendPhoneHandler = async (e) => {
     e.preventDefault();
-
-    if (phone.length != 11 || !phone.startsWith("09")) {
+    const phoneRegex = /^09\d{9}$/;
+    if (!phoneRegex.test(phone)) {
       return toast.error("شماره معتبر نیست");
     }
     setIsLoading(true);
